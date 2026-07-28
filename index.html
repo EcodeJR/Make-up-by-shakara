@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makeup by Shakara — Destination Makeup Artist, Abuja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15110D;
+    --ink-2:#1D1712;
+    --bone:#F2E9DC;
+    --bone-dim:#C9BCA9;
+    --gold:#C79A56;
+    --gold-soft:#E4C486;
+    --oxblood:#6B2431;
+    --line:rgba(242,233,220,0.14);
+    --radius:2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(21,17,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1180px; margin:0 auto; padding:20px 32px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+  }
+  .logo em{ font-style:italic; color:var(--gold); }
+  .nav-links{ display:flex; gap:36px; align-items:center; }
+  .nav-links a{
+    font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--bone-dim);
+    transition:color 0.25s ease;
+  }
+  .nav-links a:hover{ color:var(--gold); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
+    padding:12px 22px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    border-radius:var(--radius);
+    transition:background 0.25s ease, color 0.25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{ background:var(--gold); color:var(--ink); }
+  .btn-solid{ background:var(--oxblood); border-color:var(--oxblood); color:var(--bone); }
+  .btn-solid:hover{ background:var(--gold); border-color:var(--gold); color:var(--ink); }
+  .menu-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:150px 0 80px;
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% 10%, rgba(199,154,86,0.14), transparent 60%),
+      linear-gradient(100deg, rgba(21,17,13,0.97) 38%, rgba(21,17,13,0.75) 60%, rgba(21,17,13,0.4) 100%),
+      url('img/bridal-01.jpg') right center / cover no-repeat,
+      var(--ink);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:60px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    line-height:0.98;
+    margin:22px 0 26px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold-soft); }
+  .hero p.lede{
+    max-width:440px;
+    color:var(--bone-dim);
+    font-size:1.02rem;
+  }
+  .hero-cta{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+
+  /* boarding pass card */
+  .pass{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:26px 26px 22px;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .pass::before{
+    content:"";
+    position:absolute; left:-9px; top:50%; transform:translateY(-50%);
+    width:18px; height:18px; border-radius:50%;
+    background:var(--ink);
+    border:1px solid var(--line);
+  }
+  .pass::after{
+    content:"";
+    position:absolute; right:-9px; top:50%; transform:translateY(-50%);
+    width:18px; height:18px; border-radius:50%;
+    background:var(--ink);
+    border:1px solid var(--line);
+  }
+  .pass-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding-bottom:16px; margin-bottom:16px;
+    border-bottom:1px dashed rgba(242,233,220,0.25);
+  }
+  .pass-top .tag{ font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; color:var(--bone-dim); }
+  .pass-top .code{ font-family:'Space Mono',monospace; font-size:1.4rem; color:var(--gold-soft); }
+  .route{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'Space Mono', monospace;
+    font-size:0.85rem;
+    margin-bottom:18px;
+  }
+  .route .city{ text-align:center; }
+  .route .city small{ display:block; color:var(--bone-dim); font-size:0.62rem; margin-top:4px; letter-spacing:0.08em; }
+  .route .plane{ color:var(--gold); font-size:1rem; opacity:0.85; }
+  .stampline{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .stamp{
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase;
+    border:1px solid var(--gold);
+    color:var(--gold-soft);
+    padding:6px 10px;
+    border-radius:999px;
+    transform:rotate(-2deg);
+  }
+  .stamp:nth-child(2){ transform:rotate(2deg); }
+  .stamp:nth-child(3){ transform:rotate(-1deg); }
+  .stamp:nth-child(4){ transform:rotate(3deg); }
+  .stamp:nth-child(5){ transform:rotate(-3deg); }
+
+  .stats-strip{
+    margin-top:56px;
+    display:flex; gap:0; border-top:1px solid var(--line);
+  }
+  .stats-strip .stat{
+    flex:1; padding:20px 0 0; border-right:1px solid var(--line);
+  }
+  .stats-strip .stat:last-child{ border-right:none; }
+  .stats-strip .num{ font-family:'Fraunces', serif; font-size:1.9rem; color:var(--gold-soft); }
+  .stats-strip .lbl{ font-family:'Space Mono', monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--bone-dim); margin-top:4px;}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{ padding:120px 0; position:relative; }
+  .section-head{ margin-bottom:56px; max-width:640px; }
+  .section-head .eyebrow{ margin-bottom:14px; display:block; }
+  .section-head h2{ font-size:clamp(2rem, 4vw, 2.8rem); }
+  .section-head h2 em{ font-style:italic; color:var(--gold-soft); }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--ink-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center; }
+  .portrait{
+    aspect-ratio:4/5;
+    border-radius:4px;
+    border:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .portrait img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:top center;
+  }
+  .portrait::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(21,17,13,0) 60%, rgba(21,17,13,0.55) 100%);
+  }
+  .quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.5;
+    color:var(--gold-soft);
+    margin:26px 0;
+    padding-left:22px;
+    border-left:2px solid var(--gold);
+  }
+  .about p.body-text{ color:var(--bone-dim); max-width:520px; }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service{
+    background:var(--ink);
+    padding:34px 26px;
+    transition:background 0.3s ease;
+  }
+  .service:hover{ background:var(--ink-2); }
+  .service .mark{ font-family:'Space Mono', monospace; color:var(--gold); font-size:0.78rem; letter-spacing:0.1em; }
+  .service h3{ font-size:1.2rem; margin:16px 0 10px; font-weight:500; }
+  .service p{ color:var(--bone-dim); font-size:0.9rem; }
+  .service .from{ margin-top:16px; font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--gold-soft); }
+
+  /* ---------- DESTINATIONS (PASSPORT PAGES) ---------- */
+  .passport{ background:var(--ink); }
+  .stamps-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:20px;
+  }
+  .stampcard{
+    border:1px dashed rgba(242,233,220,0.3);
+    border-radius:6px;
+    padding:26px 14px;
+    text-align:center;
+    position:relative;
+  }
+  .stampcard .flag{ font-size:1.7rem; }
+  .stampcard h4{ font-family:'Fraunces', serif; font-size:1rem; margin-top:12px; font-weight:500; }
+  .stampcard .yr{ font-family:'Space Mono', monospace; font-size:0.62rem; color:var(--gold); letter-spacing:0.1em; margin-top:6px; display:block; }
+  .stampcard::after{
+    content:"VERIFIED";
+    position:absolute; top:10px; right:10px;
+    font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.1em;
+    color:rgba(199,154,86,0.55);
+    border:1px solid rgba(199,154,86,0.4);
+    padding:2px 5px; border-radius:2px;
+    transform:rotate(8deg);
+  }
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:220px; gap:14px;
+  }
+  .portfolio-grid .cell:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  .portfolio-grid .cell:nth-child(6){ grid-column:span 2; }
+  .portfolio-grid .cell:nth-child(7){ grid-column:span 2; }
+  .cell{
+    border-radius:4px;
+    border:1px solid var(--line);
+    background:linear-gradient(150deg, rgba(199,154,86,0.16), rgba(107,36,49,0.24));
+    display:flex; align-items:flex-end;
+    padding:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cell img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:top center;
+  }
+  .cell::before{
+    content:"";
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(21,17,13,0) 45%, rgba(21,17,13,0.85) 100%);
+  }
+  .cell .cap{ position:relative; z-index:2; font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.06em; color:var(--bone); text-transform:uppercase; text-shadow:0 1px 6px rgba(0,0,0,0.6); }
+
+  /* ---------- TESTIMONIAL ---------- */
+  .testimonial{ background:var(--ink-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
+  .testimonial .quote{ font-size:1.9rem; max-width:780px; margin:0 auto 26px; border:none; padding:0; }
+  .testimonial .who{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; color:var(--bone-dim); text-transform:uppercase; }
+
+  /* ---------- BOOKING ---------- */
+  .book-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:center; }
+  .contact-line{ display:flex; gap:14px; padding:16px 0; border-top:1px solid var(--line); }
+  .contact-line:last-child{ border-bottom:1px solid var(--line); }
+  .contact-line .k{ font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); width:110px; flex-shrink:0; }
+  .contact-line .v{ color:var(--bone-dim); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:50px 0; border-top:1px solid var(--line); }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .foot-links{ display:flex; gap:26px; }
+  .foot-links a{ color:var(--bone-dim); font-size:0.85rem; transition:color 0.2s ease; }
+  .foot-links a:hover{ color:var(--gold); }
+  .copyright{ font-family:'Space Mono', monospace; font-size:0.68rem; color:var(--bone-dim); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .about-grid{ grid-template-columns:1fr; }
+    .book-grid{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:repeat(2,1fr); }
+    .stamps-grid{ grid-template-columns:repeat(2,1fr); }
+    .portfolio-grid{ grid-template-columns:repeat(2,1fr); }
+    .portfolio-grid .cell:nth-child(1){ grid-column:span 2; grid-row:span 1; }
+    .portfolio-grid .cell:nth-child(7){ grid-column:span 2; }
+    .nav-links{ display:none; }
+    section{ padding:80px 0; }
+  }
+  @media (max-width: 560px){
+    .wrap{ padding:0 20px; }
+    .services-grid{ grid-template-columns:1fr; }
+    .stamps-grid{ grid-template-columns:1fr 1fr; }
+    .stats-strip{ flex-wrap:wrap; }
+    .stats-strip .stat{ flex:1 1 50%; margin-bottom:16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">MAKEUP BY <em>SHAKARA</em></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#book" class="btn">Book Now</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Central Area · Abuja, Nigeria</span>
+        <h1>Destination<br><em>makeup artist</em>,<br>est. 2014.</h1>
+        <p class="lede">Bridal and editorial artistry for women who travel — from the Central Area studio in Abuja to weddings across France, Egypt, and beyond. Skin-first, camera-ready, unmistakably yours.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn btn-solid">Book on WhatsApp</a>
+          <a href="#portfolio" class="btn">View Portfolio</a>
+        </div>
+
+        <div class="stats-strip">
+          <div class="stat"><div class="num">10+</div><div class="lbl">Years Artistry</div></div>
+          <div class="stat"><div class="num">5</div><div class="lbl">Countries Served</div></div>
+          <div class="stat"><div class="num">1000+</div><div class="lbl">Faces Glammed</div></div>
+        </div>
+      </div>
+
+      <div class="pass">
+        <div class="pass-top">
+          <div>
+            <div class="tag">Boarding Pass</div>
+            <div class="code">ABV</div>
+          </div>
+          <div style="text-align:right">
+            <div class="tag">Est.</div>
+            <div class="code">2014</div>
+          </div>
+        </div>
+        <div class="route">
+          <div class="city">ABV<small>Abuja</small></div>
+          <div class="plane">✈</div>
+          <div class="city">CDG<small>France</small></div>
+          <div class="plane">✈</div>
+          <div class="city">CAI<small>Egypt</small></div>
+          <div class="plane">✈</div>
+          <div class="city">YYZ<small>Canada</small></div>
+        </div>
+        <div class="stampline">
+          <span class="stamp">Nigeria</span>
+          <span class="stamp">France</span>
+          <span class="stamp">Europe</span>
+          <span class="stamp">Egypt</span>
+          <span class="stamp">Canada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait reveal"><img src="img/artist-portrait.jpg" alt="Blessing Teni, founder of Makeup by Shakara" loading="lazy"></div>
+      <div class="reveal">
+        <span class="eyebrow">The Artist</span>
+        <h2 style="margin-top:14px;">Meet Blessing Teni</h2>
+        <p class="quote">"Every face is a passport — I just help it travel further."</p>
+        <p class="body-text">Since 2014, Blessing has built a name in Abuja for glam that photographs as well as it feels. What started as studio sessions on Ali Muhammad Zarah Street has grown into a destination practice — flying out for weddings in France and Egypt, and building a loyal client base across the Nigerian diaspora in Canada and Europe. Every booking starts with skin prep, not products, and ends with a look built to hold through twelve hours of dancing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What's on offer</span>
+      <h2>Glam, <em>tailored</em> to the occasion.</h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service">
+        <span class="mark">01</span>
+        <h3>Bridal Glam</h3>
+        <p>Trial + wedding-day application, built to last from vows to last dance.</p>
+        <div class="from">From ₦80,000</div>
+      </div>
+      <div class="service">
+        <span class="mark">02</span>
+        <h3>Destination Wedding</h3>
+        <p>Full travel package for weddings outside Abuja — Lagos, Paris, Cairo, and beyond.</p>
+        <div class="from">Quote on request</div>
+      </div>
+      <div class="service">
+        <span class="mark">03</span>
+        <h3>Studio Session</h3>
+        <p>Owambe, birthdays, and event glam at the Central Area studio.</p>
+        <div class="from">From ₦35,000</div>
+      </div>
+      <div class="service">
+        <span class="mark">04</span>
+        <h3>Editorial &amp; Shoot</h3>
+        <p>Camera-ready looks for campaigns, lookbooks, and cover shoots.</p>
+        <div class="from">From ₦50,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="passport" id="destinations">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Stamped &amp; verified</span>
+      <h2>Where the passport <em>has traveled</em>.</h2>
+    </div>
+    <div class="stamps-grid reveal">
+      <div class="stampcard"><div class="flag">🇳🇬</div><h4>Nigeria</h4><span class="yr">Home base</span></div>
+      <div class="stampcard"><div class="flag">🇫🇷</div><h4>France</h4><span class="yr">Destination</span></div>
+      <div class="stampcard"><div class="flag">🇪🇺</div><h4>Europe</h4><span class="yr">Destination</span></div>
+      <div class="stampcard"><div class="flag">🇪🇬</div><h4>Egypt</h4><span class="yr">Destination</span></div>
+      <div class="stampcard"><div class="flag">🇨🇦</div><h4>Canada</h4><span class="yr">Destination</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Recent work</span>
+      <h2>A look at the <em>artistry</em>.</h2>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="cell"><img src="img/bridal-01.jpg" alt="Bridal glam with crystal headpiece" loading="lazy"><span class="cap">Bridal — Studio</span></div>
+      <div class="cell"><img src="img/studio-glam.jpg" alt="Studio glam look" loading="lazy"><span class="cap">Studio Glam</span></div>
+      <div class="cell"><img src="img/destination-canada.jpg" alt="Client photographed in Canada" loading="lazy"><span class="cap">Destination — Canada</span></div>
+      <div class="cell"><img src="img/owambe-glam.jpg" alt="Owambe event glam" loading="lazy"><span class="cap">Owambe Glam</span></div>
+      <div class="cell"><img src="img/editorial.jpg" alt="Editorial glam close-up" loading="lazy"><span class="cap">Editorial</span></div>
+      <div class="cell"><img src="img/traditional-glam.jpg" alt="Traditional beaded look" loading="lazy"><span class="cap">Traditional Glam</span></div>
+      <div class="cell"><img src="img/bridal-02.jpg" alt="Bridal look with floral veil" loading="lazy"><span class="cap">Bridal — Destination</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="wrap">
+    <p class="quote">"She flew out to Cairo for our wedding and somehow still had the studio's attention to detail. Twelve hours later, not a single crease."</p>
+    <div class="who">— Bride, Destination Wedding 2025</div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="margin-top:14px;">Ready when<br>you are.</h2>
+        <p class="body-text" style="margin-top:18px;"></p>Bookings run through WhatsApp only. Send your date, location, and occasion to get a quote within 24 hours.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-solid">Message on WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-line"><div class="k">Studio</div><div class="v">436 Ali Muhammad Zarah St, Central Area, Opp. National Hospital, Abuja</div></div>
+        <div class="contact-line"><div class="k">Instagram</div><div class="v">@makeupbyshakara</div></div>
+        <div class="contact-line"><div class="k">Hours</div><div class="v">Tues – Sun, by appointment</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="logo" style="font-size:1rem;">MAKEUP BY <em>SHAKARA</em></div>
+    <div class="foot-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">WhatsApp</a>
+    </div>
+    <div class="copyright">© 2026 Makeup by Shakara. Abuja, Nigeria.</div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
